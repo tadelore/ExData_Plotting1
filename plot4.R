@@ -15,7 +15,7 @@ v1 <- c(first(which(nday=="Thursday")), first(which(nday=="Friday")), last(which
 v2 <- c("Thu", "Fri", "Sat")
 
 #print plot 4 to png file
-png(filename = "plot4.png")
+png(filename = "plot4.png", width = 480, height = 480)
 
 #display four sub plots on screen
 par(mfrow = c(2,2), mar = c(4,4,2,2))

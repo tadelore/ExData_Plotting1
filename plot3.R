@@ -13,7 +13,7 @@ nday <- weekdays(data[,1])
 #save file as plot3.png with width and height 480 x 480 pixels 
 m <- max(max(data$Sub_metering_1), max(data$Sub_metering_2), max(data$Sub_metering_3))
 
-png(filename = "plot3.png")
+png(filename = "plot3.png", width = 480, height = 480)
 plot(c(0, 2880), c(0, m), type = "n",  xaxt = "n", xlab = "", ylab = "Energy sub metering") 
 with(data, lines(Sub_metering_1, col = "black"))
 with (data, lines(Sub_metering_2, col = "red"))
