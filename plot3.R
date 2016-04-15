@@ -7,22 +7,14 @@ setwd("C:/Users/datacent52/Documents/Temilade Adelore_Office/DataScienceCourse/E
 data <- read.table("household_power_consumption.txt", header = TRUE, sep = ";", na.strings = "?")
 
 #convert data and time variables
-data[,1] <- as.Date(as.character(data[,1]), "%d/%m/%Y")
-nday <- weekdays(data[,1])
+dateTime <- strptime((paste(data[,1], data[,2])), "%d/%m/%Y %H:%M:%S")
 
 #save file as plot3.png with width and height 480 x 480 pixels 
-m <- max(max(data$Sub_metering_1), max(data$Sub_metering_2), max(data$Sub_metering_3))
-
 png(filename = "plot3.png", width = 480, height = 480)
-plot(c(0, 2880), c(0, m), type = "n",  xaxt = "n", xlab = "", ylab = "Energy sub metering") 
-with(data, lines(Sub_metering_1, col = "black"))
-with (data, lines(Sub_metering_2, col = "red"))
-with(data, lines(Sub_metering_3, col = "blue"))
 
-#vector of x axis labels
-v1 <- c(first(which(nday=="Thursday")), first(which(nday=="Friday")), last(which(nday == "Friday")))
-v2 <- c("Thu", "Fri", "Sat")
-axis(1, at= v1, labels = v2 , las = 0)
+plot(dateTime, data$Sub_metering_1, type = "l", xlab = "", ylab = "Energy sub metering") 
+lines(dateTime, data$Sub_metering_2, col = "red")
+lines(dateTime, data$Sub_metering_3, col = "blue")
 
 #legend
 legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
