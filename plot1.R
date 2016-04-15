@@ -4,6 +4,8 @@
 
 setwd("C:/Users/datacent52/Documents/Temilade Adelore_Office/DataScienceCourse/ExploratoryDataAnalysis/CourseProject1")
 
+#dates before 1/2/2007 and after 2/2/2007 
+#manually removed from text file to accomodate memory limitations 
 data <- read.table("household_power_consumption.txt", header = TRUE, sep = ";", na.strings = "?")
 
 #plot 1
